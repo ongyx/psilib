@@ -4,7 +4,14 @@
 <img src="https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_logo.png" alt="psiman_logo:Ψ" width="200"/>
 
 Welcome to the repo for psiman, a json-based package manager that uses the [psidex](https://github.com/sn3ksoftware/psidex) system.
-Features:
+# Installation
+Download the install script and run it:
+```
+curl -O https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py
+python install.py
+```
+Configuration files are, by default, stored at ~/Library/psicfg.
+# Features:
 * A decentralised repository system, where the package authors are also the repo maintainers.
 * Schemes can be added to psiman, depending on the repo host. You might even be able to use non-conventional methods (like Google Drive) to host repos in this system!
 * Their repos/packages appear as minimal entries to the main index.json file. From there, psiman will seek out the package through the listings.
@@ -66,6 +73,6 @@ parsing to be done diffrently based on it’s version number.
 
 The code from [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing) will be modified to use this system, which should _not_ take long,
 considering that it already uses a pseudo-json system.
-A testing release will be available soon.
+A testing release is now available! Follow the install instructions under `Installation`.
 
 All code here, including the psiman package manager, is under the MIT License.
