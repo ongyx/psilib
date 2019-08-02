@@ -4,24 +4,24 @@
 <img src="https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_logo.png" alt="psiman_logo:Ψ" width="200"/>
 
 Welcome to the repo for psiman, a json-based package manager that uses the [psidex](https://github.com/sn3ksoftware/psidex) system.
-
+psiman can only work on Python 3.5+, by the way.
 
 Platforms supported:
 
 | Platform  | Version  |
 | --- | --- |
-| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v2.01a |
-| [Pythonista](http://omz-software.com/pythonista/) | -WIP- |
+| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v2.10a |
+| [Pythonista](http://omz-software.com/pythonista/) | v2.10a |
 | Linux (Generic) | -WIP- |
 | Windows | -WIP- |
 
 (More platforms will be added as needed.)
 
 # Installation
-Download the install script and run it:
+## For most platforms:
+Open a live Python interpreter (python, python3) and run the command below. (Copied from StaSh)
 ```
-curl -O https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py
-python install.py
+import requests as r; exec(r.get('https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py').text)
 ```
 Configuration files are, by default, stored at `~/Library/psicfg`.
 # Features:
