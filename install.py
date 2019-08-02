@@ -1,5 +1,5 @@
-# Installer for psiman(Universal)
-# Code by Ong Yong Xin, ©️2019
+# Installer for psiman(Libterm)
+# Code by Ong Yong Xin, copyright 2019
 # Licenced under MIT License.
 # v2.00
 
@@ -33,9 +33,11 @@ def chkplat():
 
 # Declare needed vars.
 paths = chkplat()
-script_p = paths[0]
-psicfg_p = paths[1]
+script_p = os.path.expanduser(paths[0])
+psicfg_p = os.path.expanduser(paths[1])
 plat = paths[2]
+
+print(paths)
 
 # Make needed folders.
 def mkfolder():
@@ -56,8 +58,8 @@ def mkfolder():
 def createjson():
     print("\nCreating repolist...")
     dict = {
-        "mainrepo": "https://raw.githubusercontent.com/sn3ksoftware/psidex/index.json",
-        "repolist": ["https://raw.githubusercontent.com/sn3ksoftware/psidex/index.json"]
+        "mainrepo": "https://raw.githubusercontent.com/sn3ksoftware/psidex/master/index.json",
+        "repolist": ["https://raw.githubusercontent.com/sn3ksoftware/psidex/master/index.json"]
     }
     with open(psicfg_p + "/repo/repolist.json", "w") as f:
         json.dump(dict, f)
