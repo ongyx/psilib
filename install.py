@@ -8,7 +8,7 @@ import json, os, requests, zipfile, zlib, platform
 
 # Check install platform
 def chkplat():
-    if platform.machine().startswith("iP")
+    if platform.machine().startswith("iP"):
     # iOS
         try:
             import ui
