@@ -1,20 +1,46 @@
 # Installer for psiman(Libterm)
 # Code by Ong Yong Xin, ©️2019
 # Licenced under MIT License.
+# v2.00
 
 # Import needed modules.
-import json, os, requests, zipfile, zlib
+import json, os, requests, zipfile, zlib, platform
+
+# Check install platform
+def chkplat():
+    if platform.machine().startswith("iP")
+    # iOS
+        try:
+            import ui
+        except ImportError:
+            # Running on Libterm, return path to scripts and psicfg.
+            inslist = ["~/Library/scripts", "~/Library/psicfg", "Libterm"]
+            return inslist
+        else:
+            # Running on Pythonista, check if StaSh is installed.
+            try:
+                import stash
+            except ImportError:
+                print("\nE: StaSh is not installed. Please install StaSh first with [import requests as r; exec(r.get('https://bit.ly/get-stash').text)].")
+                exit()
+            else:
+                print("\nInstaller is running on Pythonista, StaSh is installed.")
+                inslist = ["~/Documents/bin", "~/Library/psicfg", "Pythonista"]
+                return inslist
+    else:
+        # Not running on iOS, other platforms not supported yet.
+        print("\nE: This installer does not support your platform yet.")
 
 # Declare needed vars.
-# By default, psiman installs its config files here.
-# If changed, please edit psiman's psicfg_path to match the one below.
-script_p = os.path.expanduser("~/Library/scripts")
-psicfg_p = os.path.expanduser("~/Library/psicfg")
+paths = chkplat()
+script_p = paths[0]
+psicfg_p = paths[1]
+plat = paths[2]
 
 # Make needed folders.
 def mkfolder():
     if os.path.isdir(psicfg_p):
-        print("\nE: psicfg folder already exists at the install location. Use psiman's inbuilt update command ti update to a newer version.")
+        print("\nE: psicfg folder already exists at the install location. Use psiman's inbuilt update command to update to a newer version.")
     else:
         try:
             os.mkdir(psicfg_p)
@@ -49,17 +75,23 @@ def extractfile():
         else:
             print("\nSucessfully extracted psiman to scripts.")
 
-# Download psiman from repo and unzip to ~/Library/scripts folder.
+# Define download function.
+def dl(url):
+    psifile = requests.get(url).content
+    with open(psicfg_p + "/tmp/psiman.zip", "wb") as f:
+         f.write(psifile)
+
+# Download psiman from repo and unzip to script folder.
 def getpsi():
     print("\nStarting install of psiman...")
     mkfolder()
     createjson()
     print("\nGetting psiman from sn3ksoftware/psiman...")
-    url = "https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman.zip"
-    psifile = requests.get(url).content
-    with open(psicfg_p + "/tmp/psiman.zip", "wb") as f:
-        f.write(psifile)
-    print("\nInstalling to ~/Library/scripts...")
+    if plat == "Pythonista":
+        dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_pythonista.zip")
+    else:
+        print("\nInstalling to ~/Library/scripts...")
+        dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_libterm.zip")
     extractfile()
     print("\nDone.")
 
