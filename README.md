@@ -4,7 +4,6 @@
 <img src="https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_logo.png" alt="psiman_logo:Ψ" width="200"/>
 
 Welcome to the repo for psiman, a json-based package manager that uses the [psidex](https://github.com/sn3ksoftware/psidex) system.
-psiman can only work on Python 3.5+, by the way.
 
 Platforms supported:
 
@@ -16,7 +15,11 @@ Platforms supported:
 | Windows | -WIP- |
 
 (More platforms will be added as needed.)
-
+# Dependencies
+psiman, of course, requires Python 3.5+.
+It does _not_ require modules outside of the standard library that comes with Python 3.5+, so it should work out of the box.
+For Pythonista, [StaSh](https://github.com/ywangd/stash) is required to run psiman.
+Install with `import requests as r; exec(r.get('https://bit.ly/get-stash').text)`.
 # Installation
 ## For most platforms:
 Open a live Python interpreter (python, python3) and run the command below. (Copied from StaSh)
