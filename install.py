@@ -1,4 +1,4 @@
-# Installer for psiman(Libterm)
+# Installer for psiman(Universal)
 # Code by Ong Yong Xin, ©️2019
 # Licenced under MIT License.
 # v2.00
