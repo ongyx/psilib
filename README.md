@@ -21,7 +21,13 @@ It does _not_ require modules outside of the standard library that comes with Py
 For Pythonista, [StaSh](https://github.com/ywangd/stash) is required to run psiman.
 Install with `import requests as r; exec(r.get('https://bit.ly/get-stash').text)`.
 # Installation
-## For most platforms:
+## Libterm:
+Download the installer and run it.
+```
+curl -O https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py
+python install.py
+```
+## Pythonista:
 Open a live Python interpreter (python, python3) and run the command below. (Copied from StaSh)
 ```
 import requests as r; exec(r.get('https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py').text)
