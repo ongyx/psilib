@@ -9,8 +9,8 @@ Platforms supported:
 
 | Platform  | Version  |
 | --- | --- |
-| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v2.11a |
-| [Pythonista](http://omz-software.com/pythonista/) | v2.11a |
+| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v2.12a |
+| [Pythonista](http://omz-software.com/pythonista/) | v2.12a |
 | Linux (Generic) | -WIP- |
 | Windows | -WIP- |
 
