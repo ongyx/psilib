@@ -17,7 +17,7 @@ Platforms supported:
 (More platforms will be added as needed.)
 # Dependencies
 psiman, of course, requires Python 3.5+.
-It does _not_ require modules outside of the standard library that comes with Python 3.5+, so it should work out of the box.
+It only requires stlib that comes with Python 3.5+ and the requests library (preinstalled on Pythonista and Libterm), so it should work out of the box.
 For Pythonista, [StaSh](https://github.com/ywangd/stash) is required to run psiman.
 Install with `import requests as r; exec(r.get('https://bit.ly/get-stash').text)`.
 # Installation
