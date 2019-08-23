@@ -28,7 +28,7 @@ curl -O https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py
 python install.py
 ```
 ## Pythonista:
-Open a live Python interpreter (python, python3) and run the command below. (Copied from StaSh)
+Open the Python interpreter (under `Console`) and run the command below. (Method copied from StaSh)
 ```
 import requests as r; exec(r.get('https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py').text)
 ```
