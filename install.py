@@ -1,17 +1,43 @@
-# Installer for psiman(Libterm)
-# Code by Ong Yong Xin, copyright 2019
-# Licenced under MIT License.
-# v2.00
+#!/usr/bin/env python3
+
+"""
+0000  00000 00000 0   0   0   00  0
+00  0 00      0   00 00  0 0  00  0
+00000 00000   0   0 0 0 00000 0 0 0
+00       00   0   0   0 0   0 0  00
+00    00000 00000 0   0 0   0 0  00
+(psiman)
+- INSTALLER EDITION -
+
+v2.1.0
+
+A blob that installs psiman (the cli-wrapper
+for psilib), and psilib.
+
+Copyright (c) 2019 Ong Yong Xin
+Open-sourced under the MIT License.
+
+Source:
+https://github.com/sn3ksoftware/psiman
+"""
 
 # Import needed modules.
-import json, os, requests, zipfile, zlib, platform
+import json
+import os
+import sys
+import requests
+import zipfile
+import zlib
+import platform
+import shutil
+import inspect
 
 # Check install platform
 def chkplat():
     if platform.machine().startswith("iP"):
     # iOS
         try:
-            import ui
+            import objc_util
         except ImportError:
             # Running on Libterm, return path to scripts and psicfg.
             inslist = ["~/Library/scripts", "~/Library/psicfg", "Libterm"]
@@ -25,24 +51,29 @@ def chkplat():
                 exit()
             else:
                 print("\nInstaller is running on Pythonista, StaSh is installed.")
-                inslist = ["~/Documents/bin", "~/Library/psicfg", "Pythonista"]
+                inslist = ["~/Documents/bin", "~/Documents/.psicfg", "Pythonista"]
                 return inslist
     else:
-        # Not running on iOS, other platforms not supported yet.
-        print("\nE: This installer does not support your platform yet.")
+        # Not running on iOS: Platform not supported.
+        print("\nE: Your platform is not supported.")
 
 # Declare needed vars.
 paths = chkplat()
 script_p = os.path.expanduser(paths[0])
 psicfg_p = os.path.expanduser(paths[1])
+tmp = psicfg_p + "/tmp/"
+site_packages = next(p for p in sys.path if 'site-packages' in p)
 plat = paths[2]
-
-print(paths)
 
 # Make needed folders.
 def mkfolder():
     if os.path.isdir(psicfg_p):
-        print("\nE: psicfg folder already exists at the install location. Use psiman's inbuilt update command to update to a newer version.")
+        print(
+        """
+        E: psicfg folder already exists at the install location.
+        Use psiman's inbuilt update command to update to a newer version.
+        """
+        )
     else:
         try:
             os.mkdir(psicfg_p)
@@ -67,21 +98,28 @@ def createjson():
 
 # Define extractfile function
 # Copied from zip2 command
-def extractfile():
+def extractfile(filepath, dest):
+    # Parse filepath
+    filepath_p = os.path.expanduser(filepath)
+    dest_p = os.path.expanduser(dest)
     print("\nExtracting...")
-    with zipfile.ZipFile(psicfg_p + "/tmp/psiman.zip", 'r') as zip:
+    with zipfile.ZipFile(filepath_p, 'r') as zip:
         try:
-            zip.extractall(path=script_p)
+            zip.extractall(path=dest_p)
         except zipfile.BadZipfile:
             print("\nE: Zip file is bad (corrupted?)\nAbort.")
         else:
             print("\nSucessfully extracted psiman to scripts.")
 
 # Define download function.
-def dl(url):
-    psifile = requests.get(url).content
-    with open(psicfg_p + "/tmp/psiman.zip", "wb") as f:
-         f.write(psifile)
+def dl(url, path=""):
+    # Parse out path to be usable
+    path_p = os.path.expanduser(path)
+    # Split url and get filename
+    filename = url.split("/")[-1]
+    file = requests.get(url).content
+    with open(path_p + filename, "wb") as f:
+         f.write(file)
 
 # Download psiman from repo and unzip to script folder.
 def getpsi():
@@ -89,12 +127,21 @@ def getpsi():
     mkfolder()
     createjson()
     print("\nGetting psiman from sn3ksoftware/psiman...")
-    if plat == "Pythonista":
-        dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_pythonista.zip")
-    else:
-        print("\nInstalling to ~/Library/scripts...")
-        dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_libterm.zip")
-    extractfile()
+    dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman.py", path=tmp)
+    dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psilib.zip", path=tmp)
+    # Extract psilib to site-packages, and
+    # move psiman.py to script path.
+    extractfile(tmp + "psilib.zip", site_packages)
+    try:
+        shutil.move(tmp + "psiman.py", script_p)
+    except shutil.Error:
+        print("\nW: psiman already exists.\nReplacing...")
+        os.remove(script_p + "/psiman.py")
+        shutil.move(tmp + "psiman.py", script_p)
+    # Clean up tmp folder
+    for file in os.listdir(tmp):
+        tmpfile = os.path.join(tmp, file)
+        os.remove(tmpfile)
     print("\nDone.")
 
 if __name__ == '__main__':
