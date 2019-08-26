@@ -40,7 +40,7 @@ Open the Python interpreter (under `Console`) and run the command below. (Method
 ```
 import requests as r; exec(r.get('https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py').text)
 ```
-Configuration files are, by default, stored at `~/Library/psicfg`.
+Configuration files are, by default, stored at `~/Documents/.psicfg`.
 # Features:
 * A decentralised repository system, where the package authors are also the repo maintainers.
 * Schemes can be added to psiman, depending on the repo host. You might even be able to use non-conventional methods (like Google Drive) to host repos in this system!
