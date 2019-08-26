@@ -1,3 +1,9 @@
+<p align="center">
+  <b> psiman </b> &bull;
+  <a href="https://github.com/sn3ksoftware/psidex">psidex</a> &bull;
+    <a href="https://github.com/sn3ksoftware/sandpkg">sandpkg</a>
+</p>
+
 # psiman: The PSIdex package MANager
 (formerly [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing))
 
