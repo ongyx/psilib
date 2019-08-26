@@ -42,10 +42,10 @@ import requests as r; exec(r.get('https://raw.githubusercontent.com/sn3ksoftware
 ```
 Configuration files are, by default, stored at `~/Documents/.psicfg`.
 # Features:
-* A decentralised repository system, where the package authors are also the repo maintainers.
+* A decentralised repository system, where the package authors are also the repo maintainers(of their own packages).
 * Schemes can be added to psiman, depending on the repo host. You might even be able to use non-conventional methods (like Google Drive) to host repos in this system!
 * Their repos/packages appear as minimal entries to the main index.json file. From there, psiman will seek out the package through the listings.
-* Fully written in Python from the bottom-up, only using modules from stdlib. 
+* Fully written in Python from the bottom-up, only using modules from stdlib. Most dependencies are stored within psilib itself.
 * Because it does not use any platform-specific modules, it is easy to port over to other *Nix-in-a-Box apps (i.e, [Libterm](https://github.com/ColdGrub1384/LibTerm)), or pure Python apps (i.e, [Pythonista](http://omz-software.com/pythonista/)).
 * Easy package management, where entries for dependencies/description/author are stored in one file.
 For an example of the main index.json file in the [psidex](https://github.com/sn3ksoftware/psidex) repo, here it is (copied from ywangd’s spec):
@@ -67,7 +67,7 @@ For an example of the main index.json file in the [psidex](https://github.com/sn
     
 }
 ```
-`meta_version` contains the version number (set according to semantic versioning);
+`meta_version` contains the version number (set according to semantic versioning) of the main index file;
 and `meta_url` containing the location of the script sub-index file (for every script entry).
 This way, part of the repo management is pushed to the package authors, making it easier to update
 their packages regularly.
@@ -97,8 +97,8 @@ Then, there is the Script sub-index file (package/script.json):
 ```
 As you can see, there is _vastly_ more infomation stored here.
 This includes more info on a specific package (author, desc., versions available, etc.)
-Also note that this script sub-index also has a semantic version number, which allows for
-parsing to be done diffrently based on it’s version number.
+Also note that this script sub-index also has a semantic version number(for the json file), which allows for
+parsing to be done diffrently based on the version number.
 
 (All this will be moved to a wiki soon.)
 # TODO
