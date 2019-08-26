@@ -13,6 +13,8 @@
 
 Welcome to the repo for psiman, a json-based package manager that uses the [psidex](https://github.com/sn3ksoftware/psidex) system.
 
+For mobile users, click [here](https://github.com/sn3ksoftware/psiman/wiki) to access the psilib/psiman wiki.
+
 Platforms supported:
 
 | Platform  | Version of cli-wrapper/psilib |
