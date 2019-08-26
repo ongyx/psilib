@@ -46,7 +46,7 @@ arg1 = getParameters(sys.argv)
 argall = sys.argv
 
 # Declare wrapper-specific variables.
-invalid_cmd = ansi(31) + '\nE: Invalid/unknown command. Try again.\n\nusage: psiman [options]\nType [spkg -h] for help.\n' + ansi(0)
+invalid_cmd = ansi(31) + '\nE: Invalid/unknown command. Try again.\n\n usage: psiman (action) [options] <input>\nType [psiman -h] for help.\n' + ansi(0)
 
 # Dictionary used to map functions.
 func_dict = {
@@ -84,6 +84,45 @@ Printing help...
     """
     )
 
+# Special function that pretty-prints input based on type.
+def prettyprint(text):
+    input_type = type(text)
+    # Define supported types to print
+    isString = (input_type is str)
+    isNumber = (input_type is int or input_type is float)
+    isIteratable = (input_type is list or input_type is tuple)
+    isBool = (input_type is bool)
+    isDict = (input_type is dict)
+    if isString:
+        print(ansi(32), text, ansi(0))
+    elif isNumber:
+        print(ansi(32), str(text), ansi(0))
+    elif isBool:
+        if text == True:
+            print(ansi(32, bold=True), "Sucess!", ansi(0))
+        elif text == False:
+            print(ansi(31, bold=True), "Failure!", ansi(0))
+    elif isDict:
+        print("\n")
+        for key, val in text.items():
+            # Unpack if there is a nested dict
+            if type(val) is dict:
+                print(ansi(34, bold=True) + key + ":")
+                for keyn, valn in val.items():
+                    print(ansi(32, bold=True), keyn, ": ", ansi(0), ansi(36), valn, ansi(0), sep="")
+            else:
+                print(ansi(32, bold=True), key, ": ", ansi(0), ansi(36), val, ansi(0), sep="")
+        print("\n")
+    else:
+        # A list/tuple.
+        try:
+           print(ansi(32))
+           for i in text:
+               print(i)
+           print(ansi(0))
+        except TypeError:
+            # None type?
+            print(text)
 
 # Define main function.
 def main():
@@ -104,10 +143,10 @@ def main():
             if func() == None:
                 pass
             else:
-                print(func())
+                prettyprint(func())
         except TypeError:
             try:
-                print(func(sys.argv[2]))
+                prettyprint(func(sys.argv[2]))
             except IndexError:
                 print(ansi(31))
                 print(
