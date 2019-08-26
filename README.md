@@ -15,10 +15,10 @@ Welcome to the repo for psiman, a json-based package manager that uses the [psid
 
 Platforms supported:
 
-| Platform  | Version  |
+| Platform  | Version of cli-wrapper/psilib |
 | --- | --- |
-| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v3.0.0a |
-| [Pythonista](http://omz-software.com/pythonista/) | v3.0.0a |
+| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v0.1.0/v3.0.0a |
+| [Pythonista](http://omz-software.com/pythonista/) | v0.1.0/v3.0.0a |
 | Linux (Generic) | -WIP- |
 | Windows | -WIP- |
 
