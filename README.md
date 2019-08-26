@@ -93,9 +93,25 @@ Also note that this script sub-index also has a semantic version number, which a
 parsing to be done diffrently based on it’s version number.
 
 (All this will be moved to a wiki soon.)
+# TODO
+The list below is as follows:
 
-The code from [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing) will be modified to use this system, which should _not_ take long,
-considering that it already uses a pseudo-json system.
-A testing release is now available! Follow the install instructions under `Installation`.
+**(M)** denotes a major change to psilib/psiman code.
 
-All code here, including the psiman package manager, is under the MIT License.
+**(m)** denotes a minor change to psilib/psiman code.
+
+**(p)** denotes a patch for a bug within psilib/psiman code.
+
+- [ ] (M) Add semantic versioning to psilib.package.install()
+- [ ] (M) Add code to handle dependencies
+- [ ] (M) Implement the whole Pythonista Script Index specification, i.e support
+packages using the same json file
+- [ ] (M) Get psilib to a stable API release (0.1.0)
+- [ ] (m) Make setrepo() and delrepo() non-interactive 
+- [ ] (m) Update meta-version in all packages to reflect API changes
+- [ ] (p) Make the cli-wrapper for psilib(psiman) less buggy
+- [ ] (p) Format output of the cli-wrapper properly
+
+# P.S
+The code from [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing) was _heavily_ modified to use the json-based `psidex` system.
+Its original source code, including the psiman package manager, is under the MIT License.
