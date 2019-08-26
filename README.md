@@ -118,7 +118,7 @@ packages using the same json file
 - [ ] (m) Make setrepo() and delrepo() non-interactive 
 - [ ] (m) Update meta-version in all packages to reflect API changes
 - [ ] (p) Make the cli-wrapper for psilib(psiman) less buggy
-- [ ] (p) Format output of the cli-wrapper properly
+- [x] (p) Format output of the cli-wrapper properly
 
 # P.S
 The code from [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing) was _heavily_ modified to use the json-based `psidex` system.
