@@ -137,7 +137,7 @@ def getpsi():
     createjson()
     print("\nGetting psiman from sn3ksoftware/psiman...")
     dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman.py", path=tmp)
-    dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psilib.zip", path=tmp)
+    dl("https://raw.githubusercontent.com/sn3ksoftware/psilib/master/psilib.zip", path=tmp)
     # Extract psilib to site-packages, and
     # move psiman.py to script path.
     # If user specifes [-m] option, install
