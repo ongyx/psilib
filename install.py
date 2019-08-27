@@ -9,7 +9,7 @@
 (psiman)
 - INSTALLER EDITION -
 
-v2.1.0
+v2.1.1
 
 A blob that installs psiman (the cli-wrapper
 for psilib), and psilib.
@@ -32,10 +32,19 @@ import platform
 import shutil
 import inspect
 
+# Get options from sys.argv
+def chkarg1():
+    try:
+        arg1 = sys.argv[1]
+    except IndexError:
+        return False
+    else:
+        return True
+
 # Check install platform
 def chkplat():
     if platform.machine().startswith("iP"):
-    # iOS
+        # iOS
         try:
             import objc_util
         except ImportError:
@@ -109,7 +118,7 @@ def extractfile(filepath, dest):
         except zipfile.BadZipfile:
             print("\nE: Zip file is bad (corrupted?)\nAbort.")
         else:
-            print("\nSucessfully extracted psiman to scripts.")
+            print("\nSucessfully extracted.")
 
 # Define download function.
 def dl(url, path=""):
@@ -119,7 +128,7 @@ def dl(url, path=""):
     filename = url.split("/")[-1]
     file = requests.get(url).content
     with open(path_p + filename, "wb") as f:
-         f.write(file)
+        f.write(file)
 
 # Download psiman from repo and unzip to script folder.
 def getpsi():
@@ -131,18 +140,24 @@ def getpsi():
     dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psilib.zip", path=tmp)
     # Extract psilib to site-packages, and
     # move psiman.py to script path.
-    extractfile(tmp + "psilib.zip", site_packages)
-    try:
-        shutil.move(tmp + "psiman.py", script_p)
-    except shutil.Error:
-        print("\nW: psiman already exists.\nReplacing...")
-        os.remove(script_p + "/psiman.py")
-        shutil.move(tmp + "psiman.py", script_p)
-    # Clean up tmp folder
-    for file in os.listdir(tmp):
-        tmpfile = os.path.join(tmp, file)
-        os.remove(tmpfile)
-    print("\nDone.")
+    # If user specifes [-m] option, install
+    # psilib module only.
+    if chkarg1():
+        if sys.argv[1] == "-m":
+            extractfile(tmp + "psilib.zip", site_packages)
+            print("\nInstalled psilib only.")
+        else:
+            try:
+                shutil.move(tmp + "psiman.py", script_p)
+            except shutil.Error:
+                print("\nW: psiman already exists.\nReplacing...")
+                os.remove(script_p + "/psiman.py")
+                shutil.move(tmp + "psiman.py", script_p)
+            # Clean up tmp folder
+            for file in os.listdir(tmp):
+                tmpfile = os.path.join(tmp, file)
+                os.remove(tmpfile)
+            print("\nInstalled both psiman and psilib.")
 
 if __name__ == '__main__':
     getpsi()
