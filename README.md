@@ -9,7 +9,7 @@
 
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/sn3ksoftware/psilib?include_prereleases&sort=semver)
 
-<img src="https://raw.githubusercontent.com/sn3ksoftware/psilib/master/psiman_logo.png" alt="psiman_logo:Ψ" width="200"/>
+<img src="https://raw.githubusercontent.com/sn3ksoftware/psilib/master/psilib_logo.png" alt="psiman_logo:Ψ" width="200"/>
 
 Welcome to the repo for psilib, a json-based backend for the [psiman](https://github.com/sn3ksoftware/psiman) package manager.
 
