@@ -7,13 +7,13 @@
 # psiman: The PSIdex package MANager
 (formerly [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing))
 
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/sn3ksoftware/psiman?include_prereleases&sort=semver)
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/sn3ksoftware/psilib?include_prereleases&sort=semver)
 
-<img src="https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman_logo.png" alt="psiman_logo:Ψ" width="200"/>
+<img src="https://raw.githubusercontent.com/sn3ksoftware/psilib/master/psiman_logo.png" alt="psiman_logo:Ψ" width="200"/>
 
 Welcome to the repo for psiman, a json-based package manager that uses the [psidex](https://github.com/sn3ksoftware/psidex) system.
 
-For mobile users, click [here](https://github.com/sn3ksoftware/psiman/wiki) to access the psilib/psiman wiki.
+For mobile users, click [here](https://github.com/sn3ksoftware/psilib/wiki) to access the psilib/psiman wiki.
 
 Platforms supported:
 
@@ -34,13 +34,13 @@ Install with `import requests as r; exec(r.get('https://bit.ly/get-stash').text)
 ## Libterm:
 Download the installer and run it.
 ```
-curl -O https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py
+curl -O https://raw.githubusercontent.com/sn3ksoftware/psilib/master/install.py
 python install.py
 ```
 ## Pythonista:
 Open the Python interpreter (under `Console`) and run the command below. (Method copied from StaSh)
 ```
-import requests as r; exec(r.get('https://raw.githubusercontent.com/sn3ksoftware/psiman/master/install.py').text)
+import requests as r; exec(r.get('https://raw.githubusercontent.com/sn3ksoftware/psilib/master/install.py').text)
 ```
 Configuration files are, by default, stored at `~/Documents/.psicfg`.
 # Features:
@@ -114,7 +114,7 @@ The list below is as follows:
 
 - [ ] (M) Add semantic versioning to psilib.package.install()
 - [ ] (M) Add code to handle dependencies
-- [ ] (M) Implement the whole Pythonista Script Index specification, i.e support
+- [ ] (M) Implement the whole Pythonista Script Index specification, i.e support multiple 
 packages using the same json file
 - [ ] (M) Get psilib to a stable API release (0.1.0)
 - [ ] (m) Make setrepo() and delrepo() non-interactive 
