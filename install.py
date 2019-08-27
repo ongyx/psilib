@@ -9,7 +9,7 @@
 (psiman)
 - INSTALLER EDITION -
 
-v2.1.1
+v2.1.2
 
 A blob that installs psiman (the cli-wrapper
 for psilib), and psilib.
@@ -27,12 +27,12 @@ import os
 import sys
 import requests
 import zipfile
-import zlib
 import platform
 import shutil
-import inspect
 
 # Get options from sys.argv
+
+
 def chkarg1():
     try:
         arg1 = sys.argv[1]
@@ -42,6 +42,8 @@ def chkarg1():
         return True
 
 # Check install platform
+
+
 def chkplat():
     if platform.machine().startswith("iP"):
         # iOS
@@ -49,18 +51,25 @@ def chkplat():
             import objc_util
         except ImportError:
             # Running on Libterm, return path to scripts and psicfg.
-            inslist = ["~/Library/scripts", "~/Library/psicfg", "Libterm"]
+            inslist = ["~/Library/scripts",
+                       "~/Library/psicfg",
+                       "Libterm"]
             return inslist
         else:
             # Running on Pythonista, check if StaSh is installed.
             try:
                 import stash
             except ImportError:
-                print("\nE: StaSh is not installed. Please install StaSh first with [import requests as r; exec(r.get('https://bit.ly/get-stash').text)].")
+                print("\nE: StaSh is not installed. Please install StaSh first"
+                      "with [import requests as r; exec(r.get('https://bit.ly/"
+                      "get-stash').text)].")
                 exit()
             else:
-                print("\nInstaller is running on Pythonista, StaSh is installed.")
-                inslist = ["~/Documents/bin", "~/Documents/.psicfg", "Pythonista"]
+                print("\nInstaller is running on Pythonista,"
+                      "StaSh is installed.")
+                inslist = ["~/Documents/bin",
+                           "~/Documents/.psicfg",
+                           "Pythonista"]
                 return inslist
     else:
         # Not running on iOS: Platform not supported.
@@ -75,13 +84,16 @@ site_packages = next(p for p in sys.path if 'site-packages' in p)
 plat = paths[2]
 
 # Make needed folders.
+
+
 def mkfolder():
     if os.path.isdir(psicfg_p):
         print(
-        """
+            """
         E: psicfg folder already exists at the install location.
-        Use psiman's inbuilt update command to update to a newer version.
-        """
+        Use psiman's inbuilt update command
+        to update to a newer version.
+            """
         )
     else:
         try:
@@ -95,11 +107,15 @@ def mkfolder():
             print("\nOK: Config directories created at " + psicfg_p + ".")
 
 # Create repolist.json in .psicfg/repo.
+
+
 def createjson():
     print("\nCreating repolist...")
     dict = {
-        "mainrepo": "https://raw.githubusercontent.com/sn3ksoftware/psidex/master/index.json",
-        "repolist": ["https://raw.githubusercontent.com/sn3ksoftware/psidex/master/index.json"]
+        "mainrepo": "https://raw.githubusercontent.com/"
+        "sn3ksoftware/psidex/master/index.json",
+        "repolist": ["https://raw.githubusercontent.com/"
+                     "sn3ksoftware/psidex/master/index.json"]
     }
     with open(psicfg_p + "/repo/repolist.json", "w") as f:
         json.dump(dict, f)
@@ -107,6 +123,8 @@ def createjson():
 
 # Define extractfile function
 # Copied from zip2 command
+
+
 def extractfile(filepath, dest):
     # Parse filepath
     filepath_p = os.path.expanduser(filepath)
@@ -121,6 +139,8 @@ def extractfile(filepath, dest):
             print("\nSucessfully extracted.")
 
 # Define download function.
+
+
 def dl(url, path=""):
     # Parse out path to be usable
     path_p = os.path.expanduser(path)
@@ -131,13 +151,30 @@ def dl(url, path=""):
         f.write(file)
 
 # Download psiman from repo and unzip to script folder.
+
+
 def getpsi():
     print("\nStarting install of psiman...")
     mkfolder()
     createjson()
     print("\nGetting psiman from sn3ksoftware/psiman...")
-    dl("https://raw.githubusercontent.com/sn3ksoftware/psiman/master/psiman.py", path=tmp)
-    dl("https://raw.githubusercontent.com/sn3ksoftware/psilib/master/psilib.zip", path=tmp)
+    
+    # Get download url of psiman release
+    psiman_json = requests.get(
+        "https://api.github.com/repos/sn3ksoftware/psiman/releases/latest"
+    ).json()
+    psiman_url = psiman_json["assets"][0]["browser_download_url"]
+    
+    # Get download url of psilib release
+    psilib_json = requests.get(
+        "https://api.github.com/repos/sn3ksoftware/psilib/releases/latest"
+    ).json()
+    psilib_url = psilib_json["assets"][0]["browser_download_url"]
+    
+    # Download psiman and psilib
+    dl(psiman_url, path=tmp)
+    dl(psilib_url, path=tmp)
+    
     # Extract psilib to site-packages, and
     # move psiman.py to script path.
     # If user specifes [-m] option, install
