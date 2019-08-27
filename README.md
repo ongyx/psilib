@@ -1,7 +1,7 @@
 <p align="center">
-  <b> psiman </b> &bull;
-  <a href="https://github.com/sn3ksoftware/psidex">psidex</a> &bull;
-    <a href="https://github.com/sn3ksoftware/sandpkg">sandpkg</a>
+  <b> psilib </b> &bull;
+  <a href="https://github.com/sn3ksoftware/psiman">psiman</a> &bull;
+    <a href="https://github.com/sn3ksoftware/psidex">psidex</a>
 </p>
 
 # psiman: The PSIdex package MANager
@@ -17,10 +17,10 @@ For mobile users, click [here](https://github.com/sn3ksoftware/psilib/wiki) to a
 
 Platforms supported:
 
-| Platform  | Version of cli-wrapper/psilib |
+| Platform  | Version of psilib |
 | --- | --- |
-| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v0.1.0/v3.0.0a |
-| [Pythonista](http://omz-software.com/pythonista/) | v0.1.0/v3.0.0a |
+| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v3.0.0a |
+| [Pythonista](http://omz-software.com/pythonista/) | v3.0.0a |
 | Linux (Generic) | -WIP- |
 | Windows | -WIP- |
 
