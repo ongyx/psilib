@@ -146,13 +146,13 @@ def getpsi():
         if sys.argv[1] == "-m":
             extractfile(tmp + "psilib.zip", site_packages)
             print("\nInstalled psilib only.")
-        else:
-            try:
-                shutil.move(tmp + "psiman.py", script_p)
-            except shutil.Error:
-                print("\nW: psiman already exists.\nReplacing...")
-                os.remove(script_p + "/psiman.py")
-                shutil.move(tmp + "psiman.py", script_p)
+    else:
+        try:
+            shutil.move(tmp + "psiman.py", script_p)
+        except shutil.Error:
+            print("\nW: psiman already exists.\nReplacing...")
+            os.remove(script_p + "/psiman.py")
+            shutil.move(tmp + "psiman.py", script_p)
             # Clean up tmp folder
             for file in os.listdir(tmp):
                 tmpfile = os.path.join(tmp, file)
