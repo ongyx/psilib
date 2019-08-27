@@ -4,16 +4,19 @@
     <a href="https://github.com/sn3ksoftware/psidex">psidex</a>
 </p>
 
-# psiman: The PSIdex package MANager
+# psilib: The json-based backend for the psiman package manager
 (formerly [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing))
 
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/sn3ksoftware/psilib?include_prereleases&sort=semver)
 
 <img src="https://raw.githubusercontent.com/sn3ksoftware/psilib/master/psiman_logo.png" alt="psiman_logo:Ψ" width="200"/>
 
-Welcome to the repo for psiman, a json-based package manager that uses the [psidex](https://github.com/sn3ksoftware/psidex) system.
+Welcome to the repo for psilib, a json-based backend for the [psiman](https://github.com/sn3ksoftware/psiman) package manager.
+
+It uses the [psidex](https://github.com/sn3ksoftware/psidex) system to distribute packages.
 
 For mobile users, click [here](https://github.com/sn3ksoftware/psilib/wiki) to access the psilib/psiman wiki.
+(psiman/psilib shares a wiki for documentation.)
 
 Platforms supported:
 
@@ -24,12 +27,12 @@ Platforms supported:
 | Linux (Generic) | -WIP- |
 | Windows | -WIP- |
 
-(More platforms will be added as needed.)
+(More platforms will be supported over time.)
 # Dependencies
-psiman, of course, requires Python 3.5+.
-It only requires stlib that comes with Python 3.5+ and the requests library (preinstalled on Pythonista and Libterm), so it should work out of the box.
-For Pythonista, [StaSh](https://github.com/ywangd/stash) is required to run psiman.
-Install with `import requests as r; exec(r.get('https://bit.ly/get-stash').text)`.
+psilib does _not_ use any platform-specific modules.
+The only external module needed is [requests](https://pypi.org/project/requests/).
+If not already installed (pre-installed on Pythonista and Libterm),
+install with `pip install requests`.
 # Installation
 ## Libterm:
 Download the installer and run it.
