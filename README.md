@@ -7,8 +7,6 @@
 # psilib: The json-based backend for the psiman package manager
 (formerly [spkg for Libterm](https://github.com/sn3ksoftware/sandpkg/tree/testing))
 
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/sn3ksoftware/psilib?include_prereleases&sort=semver)
-
 <img src="https://raw.githubusercontent.com/sn3ksoftware/psilib/master/psilib_logo.png" alt="psiman_logo:Ψ" width="200"/>
 
 Welcome to the repo for psilib, a json-based backend for the [psiman](https://github.com/sn3ksoftware/psiman) package manager.
@@ -19,8 +17,8 @@ Platforms supported:
 
 | Platform  | Version of psilib |
 | --- | --- |
-| [Libterm](https://github.com/ColdGrub1384/LibTerm) | v3.0.0a |
-| [Pythonista](http://omz-software.com/pythonista/) | v3.0.0a |
+| [Libterm](https://github.com/ColdGrub1384/LibTerm) | ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/sn3ksoftware/psilib?include_prereleases&sort=semver) |
+| [Pythonista](http://omz-software.com/pythonista/) | ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/sn3ksoftware/psilib?include_prereleases&sort=semver) |
 | Linux (Generic) | -WIP- |
 | Windows | -WIP- |
 
