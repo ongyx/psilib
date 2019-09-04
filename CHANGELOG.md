@@ -1,17 +1,20 @@
-# psilib v3.2.0-alpha:
+# Changelog
+
+### psilib v3.2.0-alpha:
 - Alpha-stage support for ywangd's older implementation of the Pythonista Script
 Index. Because of the inconsistency of package formats, this is VERY unstable
 and NOT gurenteed to work or install command-line scripts. More support will be added
 to a new bugfix later on (problably v3.2.1-alpha.)
 - Added support for packages hosted within a Github Gist. Does not work on muiti-file
-gists. (TODO)
+gists.
 - Packages can now be one of these formats: a singular .py or .pyui file, or
 a zipfile (that can contain dev-specific dependencies).
 The `type` key in the script.json file must be set to either 'module' or 'script'.
 (Scripts will be extracted/moved to `psilib.config.script_store`, and modules
-extracted to `psilib.config.site_packages`. (TODO)
+extracted to `psilib.config.site_packages`.
+- Using `psiman setrepo` will now automatically download the index from the new repo.
 
-# psilib v3.1.0-alpha:
+### psilib v3.1.0-alpha:
 - Lots of bugfixes for both psilib and
 the psiman cli-wrapper.
 - psilib now supports semantic versioning as package versions.
@@ -23,7 +26,7 @@ the psiman cli-wrapper.
 Use psiman.repo.list() to list repos in repolist and then pass the 'N'th
 repository number to set() and rem().
 
-# psilib v3.0.0-alpha:
+### psilib v3.0.0-alpha:
 THE MODULAR UPDATE
 The singular psiman script has now been split
 into two: A backend library (psilib) that
