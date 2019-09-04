@@ -33,14 +33,15 @@ The list below is as follows:
 
 **(p)** denotes a patch for a bug within psilib/psiman code.
 
-- [ ] (M) Add semantic versioning to psilib.package.install()
+- [x] (M) Add semantic versioning to psilib.package.install()
 - [ ] (M) Add code to handle dependencies
-- [ ] (M) Implement the whole Pythonista Script Index specification, i.e support multiple 
+- [x] (M) Implement the whole Pythonista Script Index specification, i.e support multiple 
 packages using the same json file
 - [ ] (M) Get psilib to a stable API release (0.1.0)
-- [ ] (m) Make setrepo() and delrepo() non-interactive 
-- [ ] (m) Update meta-version in all packages to reflect API changes
-- [ ] (p) Make the cli-wrapper for psilib(psiman) less buggy
+- [ ] (M) Add global cache to store indexes of muitiple repos (i.e, no need to switch repositories.)
+- [x] (m) Make setrepo() and delrepo() non-interactive 
+- [x] (m) Update meta-version in all packages to reflect API changes
+- [x] (p) Make the cli-wrapper for psilib(psiman) less buggy
 - [x] (p) Format output of the cli-wrapper properly
 
 # P.S
