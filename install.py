@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
 """
-0000  00000 00000 0   0   0   00  0
-00  0 00      0   00 00  0 0  00  0
-00000 00000   0   0 0 0 00000 0 0 0
-00       00   0   0   0 0   0 0  00
-00    00000 00000 0   0 0   0 0  00
-(psiman)
+0000  00000 00000 00000 0     00000
+00  0 00      0   0     0       0  
+00000 00000   0   0     0       0
+00       00   0   0     0       0
+00    00000 00000 00000 00000 00000
+(psicli)
 - INSTALLER EDITION -
 
-v2.1.2
+v2.1.4
 
 A blob that installs psiman (the cli-wrapper
 for psilib), and psilib.
@@ -22,13 +22,12 @@ https://github.com/sn3ksoftware/psiman
 """
 
 # Import needed modules.
-import json
 import os
 import sys
-import requests
+import shutil
 import zipfile
 import platform
-import shutil
+import requests
 
 # Get options from sys.argv
 
@@ -51,8 +50,8 @@ def chkplat():
 			import objc_util
 		except ImportError:
 			# Running on Libterm, return path to scripts and psicfg.
-			inslist = ["~/Library/scripts",
-			"~/Library/psicfg",
+			inslist = ["~/Library/bin",
+			"~/Documents/.psicfg",
 			"Libterm"]
 			return inslist
 		else:
@@ -65,7 +64,7 @@ def chkplat():
 				"get-stash').text)].")
 				exit()
 			else:
-				print("\nInstaller is running on Pythonista,"
+				print("\nInstaller is running on Pythonista, "
 				"StaSh is installed.")
 				inslist = ["~/Documents/bin",
 				"~/Documents/.psicfg",
@@ -73,7 +72,7 @@ def chkplat():
 				return inslist
 	else:
 		# Not running on iOS: Platform not supported.
-		print("\nE: Your platform is not supported.")
+		raise NotImplementedError("\nE: Your platform is not supported.")
 		
 # Declare needed vars.
 paths = chkplat()
@@ -129,7 +128,7 @@ def getpsi():
 		shutil.rmtree(home + ".psicfg")
 		os.mkdir(home + ".psicfg")
 	
-	extractfile(home + "resources.zip", home + ".psicfg")
+	extractfile(resource_path, home + ".psicfg")
 	
 	print("\nGetting psiman from sn3ksoftware/psiman...")
 	
@@ -162,7 +161,7 @@ def getpsi():
 		for file in os.listdir(tmp):
 			tmpfile = os.path.join(tmp, file)
 			os.remove(tmpfile)
-		os.remove(home + "resources.zip")
+		os.remove(resource_path)
 		print("\nInstalled both psiman and psilib.")
 			
 if __name__ == '__main__':
