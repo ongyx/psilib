@@ -1,5 +1,12 @@
 # Changelog
 
+### psilib v3.3.0-alpha:
+- Indexes are now downloaded for all repos at once. This means that there is no need to switch repos to get certain packages. (Also, the upgrade function now works.)
+- This incidentally also removes the need for psilib.repo.set().
+- psilib.repo.fetch() has been moved to psilib.repo.update().
+- psilib.repo.update() now returns True if all indexes were downloaded sucessfully.
+- Package installation was broken due to different possible configurations for the Script Definition file. It now uses ywangd’s original system.
+
 ### psilib v3.2.0-alpha:
 - Alpha-stage support for ywangd's older implementation of the Pythonista Script
 Index. Because of the inconsistency of package formats, this is VERY unstable
