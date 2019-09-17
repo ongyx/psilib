@@ -117,7 +117,7 @@ def dl(url, path=""):
 
 def getpsi():
 	resource_path = home + "resources.zip"
-	print("\nStarting install of psiman...")
+	print("\nStarting install of psicli...")
 	
 	# Download resources file and extract to
 	# .psicfg
@@ -130,10 +130,10 @@ def getpsi():
 	
 	extractfile(resource_path, home + ".psicfg")
 	
-	print("\nGetting psiman from sn3ksoftware/psiman...")
+	print("\nGetting psicli from sn3ksoftware/psicli...")
 	
 	# Download psiman and psilib
-	dl("https://raw.githubusercontent.com/sn3ksoftware/psidex/master/packages/rolling/psiman.zip", path=tmp)
+	dl("https://raw.githubusercontent.com/sn3ksoftware/psidex/master/packages/rolling/psicli.zip", path=tmp)
 	dl("https://raw.githubusercontent.com/sn3ksoftware/psidex/master/packages/rolling/psilib.zip", path=tmp)
 	
 	try:
