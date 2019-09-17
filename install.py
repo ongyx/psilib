@@ -11,14 +11,14 @@
 
 v2.1.4
 
-A blob that installs psiman (the cli-wrapper
+A blob that installs psicli (the cli-wrapper
 for psilib), and psilib.
 
 Copyright (c) 2019 Ong Yong Xin
 Open-sourced under the MIT License.
 
 Source:
-https://github.com/sn3ksoftware/psiman
+https://github.com/sn3ksoftware/psicli
 """
 
 # Import needed modules.
@@ -112,12 +112,12 @@ def dl(url, path=""):
 	with open(path_p + filename, "wb") as f:
 		f.write(file)
 		
-# Download psiman from repo and unzip to script folder.
+# Download psicli from repo and unzip to script folder.
 
 
 def getpsi():
 	resource_path = home + "resources.zip"
-	print("\nStarting install of psicli...")
+	print("\nStarting install of PSI...")
 	
 	# Download resources file and extract to
 	# .psicfg
@@ -130,9 +130,9 @@ def getpsi():
 	
 	extractfile(resource_path, home + ".psicfg")
 	
-	print("\nGetting psicli from sn3ksoftware/psicli...")
+	print("\nGetting psicli/psilib...")
 	
-	# Download psiman and psilib
+	# Download psicli and psilib
 	dl("https://raw.githubusercontent.com/sn3ksoftware/psidex/master/packages/rolling/psicli.zip", path=tmp)
 	dl("https://raw.githubusercontent.com/sn3ksoftware/psidex/master/packages/rolling/psilib.zip", path=tmp)
 	
@@ -146,7 +146,7 @@ def getpsi():
 		pass
 	
 	# Extract psilib to site-packages, and
-	# move psiman.py to script path.
+	# move psicli.py to script path.
 	# If user specifes [-m] option, install
 	# psilib module only.
 	if chkarg1():
@@ -155,14 +155,14 @@ def getpsi():
 			print("\nInstalled psilib only.")
 	else:
 		extractfile(tmp + "psilib.zip", site_packages + "/psilib/")
-		extractfile(tmp + "psiman.zip", script_p)
+		extractfile(tmp + "psicli.zip", script_p)
 		# Clean up tmp folder and delete
 		# resources.zip
 		for file in os.listdir(tmp):
 			tmpfile = os.path.join(tmp, file)
 			os.remove(tmpfile)
 		os.remove(resource_path)
-		print("\nInstalled both psiman and psilib.")
+		print("\nInstalled both psicli and psilib.")
 			
 if __name__ == '__main__':
 	getpsi()
